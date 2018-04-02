@@ -1,0 +1,183 @@
+.root {
+    -fx-background-image: url('assets/img/pixelbg.png');
+    -fx-background-color: transparent;
+    -fx-padding: 35 5 35 5;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+    -fx-background-repeat: none;
+}
+
+#display {
+    -fx-background-color: rgba(33, 33, 33, 0.6);
+    -fx-font-size: 50;
+    -fx-font-family: "Pixel Emulator";
+    -fx-text-fill: rgba(255, 255, 255, 1.0);
+    -fx-text-align: right;
+}
+
+.button {
+    -fx-font-family: "Pixel Emulator";
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: none;
+    -fx-font-size: 20;
+    -fx-text-fill: #000;
+    -fx-font-weight: bold;
+    -fx-min-height: 60;
+    -fx-max-height: 60;
+}
+
+.numberbuttons, #dot {
+    -fx-background-image: url('assets/img/coin.png');
+    -fx-min-width: 60;
+    -fx-max-width: 60;
+}
+
+.numberbuttons:armed, #dot:armed{
+    -fx-background-image: url('assets/img/coinflip.png');
+    -fx-text-fill: transparent;
+}
+#dot{
+    -fx-font-size: 35;
+}
+
+.zerobutton {
+    -fx-min-width: 140;
+    -fx-max-width: 140;
+    -fx-background-image: url('assets/img/cloud.png');
+}
+
+.zerobutton:armed {
+    -fx-background-image: url('assets/img/cloudh.png');
+}
+
+.operationbuttons {
+    -fx-min-height: 60;
+    -fx-max-height: 60;
+    -fx-min-width: 60;
+    -fx-max-width: 60;
+    -fx-font-weight: bolder;
+}
+
+#equal {
+    -fx-min-height: 140;
+    -fx-max-height: 140;
+    -fx-min-width: 60;
+    -fx-max-width: 60;
+    -fx-background-image: url('assets/img/q.png');
+    -fx-font-size: 30;
+    -fx-text-fill: #fff;
+}
+
+#equal:armed {
+    -fx-min-height: 140;
+    -fx-max-height: 140;
+    -fx-min-width: 60;
+    -fx-max-width: 60;
+    -fx-background-image: url('assets/img/qh.png');
+    -fx-font-size: 30;
+    -fx-text-fill: #fff;
+}
+
+#plus {
+    -fx-background-image: url('assets/img/powred.png');
+    -fx-font-size: 30;
+}
+
+#plus:armed {
+    -fx-background-image: url('assets/img/powredsm.png');
+    -fx-text-fill: transparent;
+}
+
+#minus {
+    -fx-background-image: url('assets/img/powblue.png');
+    -fx-font-size: 30;
+}
+
+#minus:armed {
+    -fx-background-image: url('assets/img/powbluesm.png');
+    -fx-text-fill: transparent;
+}
+
+#multiply {
+    -fx-background-image: url('assets/img/powyellow.png');
+    -fx-font-size: 25;
+}
+
+#multiply:armed {
+    -fx-background-image: url('assets/img/powyellowsm.png');
+    -fx-text-fill: transparent;
+}
+
+#divide {
+    -fx-background-image: url('assets/img/powgreen.png');
+    -fx-font-size: 25;
+}
+
+#divide:armed {
+    -fx-background-image: url('assets/img/powgreensm.png');
+    -fx-text-fill: transparent;
+}
+
+#ac {
+    -fx-background-image: url('assets/img/star.png');
+    -fx-font-size: 25;
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: none;
+}
+
+#ac:armed {
+    -fx-background-image: url('assets/img/starh.png');
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: none;
+}
+
+#plusminus {
+    -fx-min-height: 62;
+    -fx-max-height: 62;
+    -fx-min-width: 62;
+    -fx-max-width: 62;
+    -fx-background-image: url('assets/img/star2.png');
+    -fx-font-size: 18;
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: none;
+}
+
+#plusminus:armed {
+    -fx-background-image: url('assets/img/star2h.png');
+}
+
+.windowactions {
+    -fx-padding: 0;
+    -fx-min-height: 16;
+    -fx-max-height: 16;
+    -fx-min-width: 16;
+    -fx-max-width: 16;
+}
+
+#close {
+    -fx-background-image: url('assets/img/close.png');
+}
+
+#close:hover {
+    -fx-background-image: url('assets/img/closeh.png');
+}
+
+#minimize {
+    -fx-background-image: url('assets/img/minimize.png');
+}
+
+#minimize:hover {
+    -fx-background-image: url('assets/img/minimizeh.png');
+}
+
+#help {
+    -fx-background-image: url('assets/img/help.png');
+}
+
+#help:hover {
+    -fx-background-image: url('assets/img/helph.png');
+}
