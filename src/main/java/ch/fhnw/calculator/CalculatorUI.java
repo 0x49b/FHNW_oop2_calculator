@@ -1,7 +1,5 @@
 package ch.fhnw.calculator;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -51,20 +49,13 @@ public class CalculatorUI extends GridPane {
         for (int i = 0; i < 10; i++) {
             numberButtons.add(createButton(String.valueOf(i)));
             numberButtons.get(i).setId("number" + i);
-            numberButtons.get(i).setOnAction(
-                    new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent event) {
-                            playSound("smb_coin.wav");
-                        }
-                    }
-            );
             if (i == 0) {
                 numberButtons.get(i).getStyleClass().add("numbers");
                 numberButtons.get(i).getStyleClass().add("zerobutton");
             } else {
                 numberButtons.get(i).getStyleClass().add("numbers");
                 numberButtons.get(i).getStyleClass().add("numberbuttons");
+                numberButtons.get(i).setOnAction(event -> playSound("smb_coin.wav"));
             }
 
         }
@@ -73,23 +64,13 @@ public class CalculatorUI extends GridPane {
         help.setId("help");
         help.getStyleClass().add("windowactions");
         help.relocate(55, -29);
-        help.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                showAbout();
-            }
-        });
+        help.setOnAction(e -> showAbout());
 
         close = createButton("");
         close.setId("close");
         close.getStyleClass().add("windowactions");
         close.relocate(15, -29);
-        close.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                closeApplication();
-            }
-        });
+        close.setOnAction(e -> closeApplication());
 
         minimize = createButton("");
         minimize.setId("minimize");
@@ -102,61 +83,26 @@ public class CalculatorUI extends GridPane {
         plus = createButton("+");
         plus.setId("plus");
         plus.getStyleClass().add("operationbuttons");
-        plus.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        playSound("smb_bump.wav");
-                    }
-                }
-        );
+        plus.setOnAction(event -> playSound("smb_bump.wav"));
 
         minus = createButton("-");
         minus.setId("minus");
         minus.getStyleClass().add("operationbuttons");
-        minus.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        playSound("smb_bump.wav");
-                    }
-                }
-        );
+        minus.setOnAction(event -> playSound("smb_bump.wav"));
 
         multiply = createButton("*");
         multiply.setId("multiply");
         multiply.getStyleClass().add("operationbuttons");
-        multiply.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        playSound("smb_bump.wav");
-                    }
-                }
-        );
+        multiply.setOnAction(event -> playSound("smb_bump.wav"));
 
         divide = createButton("/");
         divide.setId("divide");
         divide.getStyleClass().add("operationbuttons");
-        divide.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        playSound("smb_bump.wav");
-                    }
-                }
-        );
+        divide.setOnAction(event -> playSound("smb_bump.wav"));
 
         dot = createButton(".");
         dot.setId("dot");
-        dot.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        playSound("smb_coin.wav");
-                    }
-                }
-        );
+        dot.setOnAction(event -> playSound("smb_coin.wav"));
 
         plusminus = createButton("+/-");
         plusminus.setId("plusminus");
