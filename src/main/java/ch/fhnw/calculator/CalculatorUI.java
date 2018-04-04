@@ -27,11 +27,13 @@ public class CalculatorUI extends GridPane {
     private Button equal;
     private Button ac;
     private Label display;
+    private boolean dotSet;
 
     public CalculatorUI() {
         initializeStylesheet();
         initializeControls();
         layoutControls();
+        this.dotSet = false;
     }
 
     private void initializeStylesheet() {
@@ -49,13 +51,14 @@ public class CalculatorUI extends GridPane {
         for (int i = 0; i < 10; i++) {
             numberButtons.add(createButton(String.valueOf(i)));
             numberButtons.get(i).setId("number" + i);
+            int finalI = i;
+            numberButtons.get(i).setOnAction(event -> addNumber(finalI));
             if (i == 0) {
                 numberButtons.get(i).getStyleClass().add("numbers");
                 numberButtons.get(i).getStyleClass().add("zerobutton");
             } else {
                 numberButtons.get(i).getStyleClass().add("numbers");
                 numberButtons.get(i).getStyleClass().add("numberbuttons");
-                numberButtons.get(i).setOnAction(event -> playSound("smb_coin.wav"));
             }
 
         }
@@ -102,7 +105,7 @@ public class CalculatorUI extends GridPane {
 
         dot = createButton(".");
         dot.setId("dot");
-        dot.setOnAction(event -> playSound("smb_coin.wav"));
+        dot.setOnAction(event -> addDot());
 
         plusminus = createButton("+/-");
         plusminus.setId("plusminus");
@@ -112,8 +115,9 @@ public class CalculatorUI extends GridPane {
 
         ac = createButton("C");
         ac.setId("ac");
+        ac.setOnAction(event -> clearDisplay());
 
-        display = new Label("42");
+        display = new Label("0");
         display.setId("display");
         display.setMaxWidth(Double.MAX_VALUE);
         display.setAlignment(Pos.BASELINE_RIGHT);
@@ -133,7 +137,7 @@ public class CalculatorUI extends GridPane {
         final AudioClip clip = new AudioClip(resource.toString());
 
         try {
-            clip.play(1.0);
+            clip.play(.5);
             Thread.sleep(4050);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -145,6 +149,36 @@ public class CalculatorUI extends GridPane {
         final URL resource = getClass().getResource("assets/sounds/" + filename);
         final AudioClip clip = new AudioClip(resource.toString());
         clip.play(1.0);
+    }
+
+    private void addNumber(int number) {
+
+        StringBuilder sb = new StringBuilder();
+        String display;
+
+        if (this.display.getText().equals("0")) {
+            display = "" + number;
+        } else {
+            display = sb.append(this.display.getText()).append(number).toString();
+        }
+
+        this.display.setText(display);
+        //if the entered number is !0 then play the coin sound
+        if (number != 0) this.playSound("smb_coin.wav");
+    }
+
+    private void addDot(){
+        if(!this.dotSet){
+            StringBuilder sb = new StringBuilder();
+            this.display.setText(sb.append(this.display.getText()).append(".").toString());
+            this.dotSet = true;
+            this.playSound("smb_coin.wav");
+        }
+    }
+
+    private void clearDisplay() {
+        this.display.setText("0");
+        this.dotSet = false;
     }
 
     private void showAbout() {
