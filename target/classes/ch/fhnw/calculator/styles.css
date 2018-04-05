@@ -120,7 +120,7 @@
 }
 
 #ac {
-    -fx-background-image: url('assets/img/star.png');
+    -fx-background-image: url('assets/img/flower.png');
     -fx-font-size: 25;
     -fx-background-color: transparent;
     -fx-background-position: center;
@@ -128,7 +128,7 @@
 }
 
 #ac:armed {
-    -fx-background-image: url('assets/img/starh.png');
+    -fx-background-image: url('assets/img/flowerh.png');
     -fx-background-color: transparent;
     -fx-background-position: center;
     -fx-background-repeat: none;
@@ -139,7 +139,7 @@
     -fx-max-height: 62;
     -fx-min-width: 62;
     -fx-max-width: 62;
-    -fx-background-image: url('assets/img/star2.png');
+    -fx-background-image: url('assets/img/star.png');
     -fx-font-size: 18;
     -fx-background-color: transparent;
     -fx-background-position: center;
@@ -147,7 +147,7 @@
 }
 
 #plusminus:armed {
-    -fx-background-image: url('assets/img/star2h.png');
+    -fx-background-image: url('assets/img/starh.png');
 }
 
 .windowactions {

@@ -109,11 +109,13 @@ public class CalculatorUI extends GridPane {
 
         plusminus = createButton("+/-");
         plusminus.setId("plusminus");
+        plusminus.setOnAction(event -> playSound("smw_message_block.wav"));
 
         equal = createButton("");
         equal.setId("equal");
+        equal.setOnAction(event -> playSound("smw_break_block.wav"));
 
-        ac = createButton("C");
+        ac = createButton("");
         ac.setId("ac");
         ac.setOnAction(event -> clearDisplay());
 
@@ -164,7 +166,12 @@ public class CalculatorUI extends GridPane {
 
         this.display.setText(display);
         //if the entered number is !0 then play the coin sound
-        if (number != 0) this.playSound("smb_coin.wav");
+        if (((number != 0))) {
+            this.playSound("smb_coin.wav");
+        } else {
+            this.playSound("smw_swimming.wav");
+        }
+
     }
 
     private void addDot(){
@@ -179,6 +186,7 @@ public class CalculatorUI extends GridPane {
     private void clearDisplay() {
         this.display.setText("0");
         this.dotSet = false;
+        this.playSound("smw_pipe.wav");
     }
 
     private void showAbout() {
