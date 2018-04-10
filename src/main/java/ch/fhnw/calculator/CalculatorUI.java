@@ -173,20 +173,27 @@ public class CalculatorUI extends GridPane {
 
         if (filename.equals("smb_coin.wav")) {
 
-            Timeline beat = new Timeline(
+            Timeline marioanim = new Timeline(
                     new KeyFrame(Duration.ZERO, event -> this.jumpMario()),
                     new KeyFrame(Duration.seconds(0.2), event -> clip.play(1.0)),
                     new KeyFrame(Duration.seconds(0.5), event -> this.walkMario())
             );
-            beat.setAutoReverse(false);
-            beat.setCycleCount(1);
-            beat.play();
+            marioanim.setAutoReverse(false);
+            marioanim.setCycleCount(1);
+            marioanim.play();
         } else {
             clip.play(1.0);
         }
     }
 
     private void addNumber(int number) {
+
+        //if the entered number is !0 then play the coin sound
+        if (((number != 0))) {
+            this.playSound("smb_coin.wav");
+        } else {
+            this.playSound("smw_swimming.wav");
+        }
 
         StringBuilder sb = new StringBuilder();
         String display;
@@ -198,12 +205,7 @@ public class CalculatorUI extends GridPane {
         }
 
         this.display.setText(display);
-        //if the entered number is !0 then play the coin sound
-        if (((number != 0))) {
-            this.playSound("smb_coin.wav");
-        } else {
-            this.playSound("smw_swimming.wav");
-        }
+
 
     }
 
