@@ -26,7 +26,7 @@ public class CalculatorApp extends Application {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
 
-        primaryStage.setHeight(480);
+        primaryStage.setHeight(590);
         primaryStage.setWidth(320);
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(CalculatorApp.class.getResourceAsStream("assets/img/supermario.png")));

@@ -1,12 +1,17 @@
 package ch.fhnw.calculator;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,6 +33,7 @@ public class CalculatorUI extends GridPane {
     private Button ac;
     private Label display;
     private boolean dotSet;
+    private ImageView mario;
 
     public CalculatorUI() {
         initializeStylesheet();
@@ -124,6 +130,20 @@ public class CalculatorUI extends GridPane {
         display.setMaxWidth(Double.MAX_VALUE);
         display.setAlignment(Pos.BASELINE_RIGHT);
 
+        Image marioimage = new Image(CalculatorUI.class.getResourceAsStream("assets/img/mariowalk2.gif"));
+        mario = new ImageView(marioimage);
+        mario.setFitHeight(89);
+        mario.setFitWidth(35);
+    }
+
+    private void jumpMario() {
+        Image mariojump = new Image(CalculatorUI.class.getResourceAsStream("assets/img/mariojump2.gif"));
+        this.mario.setImage(mariojump);
+    }
+
+    private void walkMario() {
+        Image mariowalk = new Image(CalculatorUI.class.getResourceAsStream("assets/img/mariowalk2.gif"));
+        this.mario.setImage(mariowalk);
     }
 
     private Button createButton(String text) {
@@ -150,7 +170,20 @@ public class CalculatorUI extends GridPane {
     private void playSound(String filename) {
         final URL resource = getClass().getResource("assets/sounds/" + filename);
         final AudioClip clip = new AudioClip(resource.toString());
-        clip.play(1.0);
+
+        if (filename.equals("smb_coin.wav")) {
+
+            Timeline beat = new Timeline(
+                    new KeyFrame(Duration.ZERO, event -> this.jumpMario()),
+                    new KeyFrame(Duration.seconds(0.2), event -> clip.play(1.0)),
+                    new KeyFrame(Duration.seconds(0.5), event -> this.walkMario())
+            );
+            beat.setAutoReverse(false);
+            beat.setCycleCount(1);
+            beat.play();
+        } else {
+            clip.play(1.0);
+        }
     }
 
     private void addNumber(int number) {
@@ -174,8 +207,8 @@ public class CalculatorUI extends GridPane {
 
     }
 
-    private void addDot(){
-        if(!this.dotSet){
+    private void addDot() {
+        if (!this.dotSet) {
             StringBuilder sb = new StringBuilder();
             this.display.setText(sb.append(this.display.getText()).append(".").toString());
             this.dotSet = true;
@@ -232,6 +265,8 @@ public class CalculatorUI extends GridPane {
 
         add(numberButtons.get(0), 0, 6, 2, 1);
         add(dot, 2, 6);
+
+        add(mario, 1, 7, 1, 1);
     }
 
 }
